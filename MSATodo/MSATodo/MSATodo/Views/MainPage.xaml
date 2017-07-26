@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MSATodo.Views.MainPage">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="sync" Icon="ic_sync_white_24dp.png" Text="Sync" />
+    <ToolbarItem x:Name="add" Icon="plus.png" Text="+" />
+  </ContentPage.ToolbarItems>
+
+  <ListView x:Name="TodoList" HasUnevenRows="True">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell Height="75">
+          <StackLayout Margin="10, 10, 10, 10" Orientation="Vertical" >
+            <Label Text="{Binding note}" TextColor="Black" FontSize="14" HorizontalOptions="Start" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+              <Label Text="Priority: " TextColor="#757575" FontSize="11" HorizontalOptions="Start" />
+              <Label Text="{Binding priority}" TextColor="#757575" FontSize="11" HorizontalOptions="Start" />
+              <Label Text="Date: " TextColor="#757575" FontSize="11" HorizontalOptions="Center" />
+              <Label Text="{Binding date}" TextColor="#757575" FontSize="11" HorizontalOptions="CenterAndExpand" />
+              <Label Text="Time: " TextColor="#757575" FontSize="11" HorizontalOptions="End" />
+              <Label Text="{Binding time}" TextColor="#757575" FontSize="11" HorizontalOptions="End" />
+            </StackLayout>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+</ContentPage>

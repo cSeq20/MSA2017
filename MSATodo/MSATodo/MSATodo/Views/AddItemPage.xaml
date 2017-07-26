@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="MSATodo.Views.AddItemPage"
+             Title="Add Todo">
+  
+  <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="check" Icon="spellcheck.png" Text="Sync" />
+  </ContentPage.ToolbarItems>
+
+  <StackLayout BackgroundColor="#FFE0B2" Orientation="Vertical" Padding="0, 0, 0, 0">
+    <StackLayout Orientation="Horizontal" VerticalOptions="Start" Margin="0, 20, 0, 0">
+      <Entry Placeholder="Enter todo"
+             x:Name="taskEntry"
+             HorizontalOptions="FillAndExpand"
+             PlaceholderColor="Black"
+             Margin="10, 0, 0 ,0"
+             FontSize="20"
+             TextColor="Black"
+             Keyboard="Text"
+             TextChanged="Entry_TextChanged"></Entry>
+    </StackLayout>
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+      <Label Text="Date:" HorizontalOptions="Start" Margin="15, 8, 0, 0" FontSize="20" />
+      <DatePicker x:Name="date" DateSelected="Date_Changed" HorizontalOptions="FillAndExpand" Date="{x:Static sys:DateTime.Now}">
+        <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+        <DatePicker.MinimumDate>
+          <sys:DateTime x:FactoryMethod="Parse">
+            <x:Arguments>
+              <x:String>Jan 1 2000</x:String>
+            </x:Arguments>
+          </sys:DateTime>
+        </DatePicker.MinimumDate>
+        <DatePicker.MaximumDate>
+          <sys:DateTime x:FactoryMethod="Parse">
+            <x:Arguments>
+              <x:String>Dec 31 2050</x:String>
+            </x:Arguments>
+          </sys:DateTime>
+        </DatePicker.MaximumDate>
+      </DatePicker>
+    </StackLayout>
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+      <Label Text="Time:" HorizontalOptions="Start" Margin="15, 8, 0, 0" FontSize="20"/>
+      <TimePicker x:Name="tPicker" Format="HH:mm" HorizontalOptions="FillAndExpand" />
+    </StackLayout>
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+      <Label Text="Priority:" HorizontalOptions="Start" Margin="15, 8, 0, 0" FontSize="20"/>
+      <Picker x:Name="priority" Title="Select a priority" SelectedIndexChanged="OnPrioritySelectedIndexChanged"
+              HorizontalOptions="FillAndExpand">
+        <Picker.ItemsSource>
+          <x:Array Type="{x:Type x:String}">
+            <x:String>High</x:String>
+            <x:String>Medium</x:String>
+            <x:String>Low</x:String>
+          </x:Array>
+        </Picker.ItemsSource>
+      </Picker>
+    </StackLayout>
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Spacing="0" Padding="10, 10, 10, 30">
+      <Button Text="Cancel" TextColor="Black" HorizontalOptions="FillAndExpand" HeightRequest="40"
+              BackgroundColor="White" Clicked="OnClose"></Button>
+      <Button Text="Add" TextColor="Black" HorizontalOptions="FillAndExpand" HeightRequest="40"
+              BackgroundColor="#FF5722" Clicked="addTodo"></Button>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>
