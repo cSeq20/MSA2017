@@ -1,2 +1,2 @@
-# Todo Applications
+# Todo Application
 Todo App to create a list of things
