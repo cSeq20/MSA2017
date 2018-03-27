@@ -1,2 +1,2 @@
-# MSA2017
-Todo App for Module 2
+# Todo Applications
+Todo App to create a list of things
